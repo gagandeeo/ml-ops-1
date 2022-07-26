@@ -12,7 +12,7 @@ app = Flask(__name__)
 def list_files():
     try: 
         blob_service_client = BlobServiceClient.from_connection_string(connect_str)
-        container_client = blob_service_client.get_container_client("container-1")
+        container_client = blob_service_client.get_container_client("container1")
         blob_list = container_client.list_blobs()
         filenames = []  
         for blob in blob_list:
@@ -26,4 +26,4 @@ def list_files():
         )
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
